@@ -9,18 +9,14 @@ namespace Task2.Infrastructure
 
         public XDocument ReadAsXDocument()
         {
-            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../../", 
-                "./Task2.Infrastructure/", 
-                file);
+            var filePath = GetPath();
 
             return XDocument.Load(filePath); 
         }
 
         public async Task<T?> ReadAsync<T>() where T : class
         {
-            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../../", 
-                "./Task2.Infrastructure/", 
-                file);
+            var filePath = GetPath();
 
             var xml = await File.ReadAllTextAsync(filePath);
 
@@ -29,6 +25,13 @@ namespace Task2.Infrastructure
             {
                 return (T?)serializer.Deserialize(reader);
             }
+        }
+
+        private string GetPath()
+        {
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../../", 
+                "./Task2.Infrastructure/", 
+                file);
         }
     }
 }
