@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Task2.Contract.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>Products</h1>
+<button id="button" class="btn btn-danger" onclick="downloadProducts()">Download products</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th> @Html.DisplayNameFor(model => model.Id) </th>
+            <th> @Html.DisplayNameFor(model => model.Name) </th>
+            <th> @Html.DisplayNameFor(model => model.Photo) </th>
+            <th> @Html.DisplayNameFor(model => model.Description) </th>
+            <th> @Html.DisplayNameFor(model => model.Variant) </th>
+            <th> @Html.DisplayNameFor(model => model.State) </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="product-body">
+    @foreach (var item in Model) {
+        <tr>
+            <td> @Html.DisplayFor(modelItem => item.Id) </td>
+            <td style="white-space: nowrap;"> @Html.DisplayFor(modelItem => item.Name) </td>
+            <td> <img width="90" height="90" src="@Html.DisplayFor(modelItem => item.Photo)" alt="Alternate Text" /> </td>
+            <td> @Html.Raw(item.Description) </td>
+            <td> @Html.DisplayFor(modelItem => item.Variant) </td>
+             <td id="state-@item.Id" class=@(item.State == @State.Correct ? "Correct" : "InCorrect")> @Html.DisplayFor(modelItem => item.State) </td>
+            <td style="white-space: nowrap;" > <button class="btn btn-primary" onclick="changeState(@item.Id)">Change state</button> </td>
+        </tr>
+}
+    </tbody>
+</table>
