@@ -7,7 +7,7 @@ namespace Task2.Tests;
 public class ProductProvider3Tests
 {
     [Test]
-    public async Task GetProductsAsync_Should_Return_Products_From_XmlReader()
+    public async Task GetProductsAsync_Should_Map_Products_From_XmlReader()
     {
         // Arrange
         var xmlReader = new XmlProductReader("./Provider3/dostawca3plik1.xml");

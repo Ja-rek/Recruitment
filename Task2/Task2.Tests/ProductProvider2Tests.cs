@@ -1,5 +1,4 @@
-﻿using AutoFixture.NUnit3;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Task2.Infrastructure;
 using Task2.Infrastructure.Provider2;
 
