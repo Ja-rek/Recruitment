@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Task2.Application;
-using Task2.Contract;
 
 namespace Task2.Presentation.Controllers
 {
@@ -14,11 +13,6 @@ namespace Task2.Presentation.Controllers
             var products = await productStore.GetProductsAsync();
 
             return View(products);
-        }
-
-        public async Task<IEnumerable<Product>> GetProducts()
-        {
-            return await productStore.GetProductsAsync();
         }
 
         [HttpPost]
